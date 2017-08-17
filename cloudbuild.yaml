@@ -1,0 +1,8 @@
+steps:
+  - name: "gcr.io/cloud-builders/go"
+    args: ["install", "github.com/gcptest1/test"]
+    env: ["PROJECT_ROOT=github.com/gcptest1/test"]
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["build", "-t", "gcr.io/hcl-jeck-cpo200 /test:$REVISION_ID", "-f", "Dockerfile", "."]
+images:
+  - "gcr.io/hcl-jeck-cpo200 /test:$REVISION_ID"
